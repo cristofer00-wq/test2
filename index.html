@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEFI-AC Panel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- LOGIN -->
+    <div id="login-screen">
+        <div class="login-box">
+            <div class="brand-logo-lg">AC</div>
+            <h1>DEFI-AC</h1>
+            <p>by definitlynotlux</p>
+            <input type="password" id="api-key-input" placeholder="API klíč" />
+            <button id="login-btn">Přihlásit</button>
+            <p id="login-error" class="error hidden">Neplatný klíč.</p>
+        </div>
+    </div>
+
+    <!-- APP -->
+    <div id="app" class="hidden">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">AC</div>
+                <div class="brand-text">
+                    <strong>DEFI-AC</strong>
+                    <span>by definitlynotlux</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <button class="nav-item active" data-tab="general">Přehled</button>
+                <button class="nav-item" data-tab="detections">Detekce</button>
+                <button class="nav-item" data-tab="banlist">Banlist</button>
+                <button class="nav-item" data-tab="players">Hráči</button>
+                <button class="nav-item" data-tab="resources">Resources</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="logout-btn">Odhlásit</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <!-- GENERAL -->
+            <section class="tab active" id="tab-general">
+                <h2>Přehled serveru</h2>
+                <div class="stat-grid">
+                    <div class="stat-card"><span class="stat-label">Aktivní bany</span><span class="stat-value" id="stat-bans">-</span></div>
+                    <div class="stat-card"><span class="stat-label">Celkem detekcí</span><span class="stat-value" id="stat-detections">-</span></div>
+                    <div class="stat-card"><span class="stat-label">Sledovaní hráči</span><span class="stat-value" id="stat-players">-</span></div>
+                    <div class="stat-card"><span class="stat-label">Detekce za 24h</span><span class="stat-value" id="stat-24h">-</span></div>
+                </div>
+                <h3>Nejčastější detekce</h3>
+                <div id="top-detections" class="chip-list"></div>
+            </section>
+
+            <!-- DETECTIONS -->
+            <section class="tab" id="tab-detections">
+                <div class="tab-header">
+                    <h2>Detekce</h2>
+                    <select id="detections-category">
+                        <option value="">Všechny kategorie</option>
+                        <option value="movement">Movement</option>
+                        <option value="weapon">Weapon</option>
+                        <option value="vehicle">Vehicle</option>
+                        <option value="entity">Entity</option>
+                        <option value="resource">Resource</option>
+                        <option value="network">Network</option>
+                    </select>
+                </div>
+                <table class="data-table">
+                    <thead><tr><th>Čas</th><th>Typ</th><th>Severity</th><th>Hráč</th><th>Detail</th></tr></thead>
+                    <tbody id="detections-body"><tr><td colspan="5" class="empty">Načítám...</td></tr></tbody>
+                </table>
+            </section>
+
+            <!-- BANLIST -->
+            <section class="tab" id="tab-banlist">
+                <div class="tab-header">
+                    <h2>Banlist</h2>
+                    <input type="text" id="banlist-search" placeholder="Hledat jméno/license/důvod..." />
+                </div>
+                <table class="data-table">
+                    <thead><tr><th>Datum</th><th>Hráč</th><th>Důvod</th><th>Zabanoval</th><th>License</th><th></th></tr></thead>
+                    <tbody id="banlist-body"><tr><td colspan="6" class="empty">Načítám...</td></tr></tbody>
+                </table>
+            </section>
+
+            <!-- PLAYERS -->
+            <section class="tab" id="tab-players">
+                <div class="tab-header">
+                    <h2>Hráči</h2>
+                    <input type="text" id="players-search" placeholder="Hledat jméno/license..." />
+                </div>
+                <table class="data-table">
+                    <thead><tr><th>Jméno</th><th>Risk score</th><th>Naposledy viděn</th><th>License</th></tr></thead>
+                    <tbody id="players-body"><tr><td colspan="4" class="empty">Načítám...</td></tr></tbody>
+                </table>
+            </section>
+
+            <!-- RESOURCES -->
+            <section class="tab" id="tab-resources">
+                <h2>Resource log</h2>
+                <table class="data-table">
+                    <thead><tr><th>Čas</th><th>Resource</th><th>Akce</th><th>Detail</th></tr></thead>
+                    <tbody id="resources-body"><tr><td colspan="4" class="empty">Načítám...</td></tr></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

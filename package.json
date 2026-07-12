@@ -1,0 +1,17 @@
+{
+  "name": "defi-ac-panel",
+  "version": "1.0.0",
+  "description": "DEFI-AC Web Panel - dashboard pro FiveM anticheat",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.10.0",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5"
+  }
+}
